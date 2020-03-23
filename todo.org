@@ -1,0 +1,49 @@
+* Project-Organisation
+** DONE change source/header-layout
+   make header-files pure interfaces and put everything else into the .c files
+
+** TODO typedef ScePsp vector-stuff and rename cr_maths
+   typedef all the important ScePsp 3d-graphics related psp-stuff in cr_math,
+   include a view functions + rename cr_maths into cr_math and maybe move it outside of
+   core into util
+** TODO rewrite util-mem-manangement
+   put the typedef-functionpointers into a seperate headerfile to prevent
+   rewriting code...
+** TODO get project on [[www.github.com]]
+   get a bit more familiar with github (from console) and after, install magit
+
+* Bug-fixing 
+** TODO fix loading of non 2^n-textures
+** TODO fix weird render-artifacts on real hardware
+    [[./src/core/graphics/]]
+   probably because of the missing alignment the actual hardware needs
+   (look into the 15-byte more stackoverflow-answer for valloc())
+
+* New Features
+** TODO write generic function for loading textures
+    [[./src/core/graphics/cr_texture.c]]
+    single function with support for multiple different image-formats
+    it automatically checks the endings (.png/.jpeg etc), sees if they are supported and calls
+    correct decoder-function
+** TODO util
+*** TODO implement util_list and debug util_map
+    [[./src/util]]
+    debug with gdb on PC as code is crossplatform
+    
+** TODO graphics
+*** DONE implement simple camera to move arround in 3D-space
+    [[./src/core/graphics/]]
+    remember vector-maths
+*** TODO write obj_loader-code [[./src/util]] study how obj-files are encoded (and how they differ from sceGu-formatting) and implement a simple loader **** TODO use blender to create a simple 3d-mesh and test it
+*** TODO implement JPEG-loader
+    [[./src/core/graphics/]]
+    get familiar with libjpeg and write a basic texture-loader
+
+*** TODO implement PNG-texture-loader 
+   [[./src/core/graphics/cr_texture.c::64]]
+   get familiar with png and bufwdith/height as well as sceGuCopyImage-parameters
+* game
+** TODO write simple "game" where you can fly arround in 3D-space
+*** TODO get third-person camera working with space-ship model
+*** TODO get some planets / space-stuff meshes and load them
+*** TODO put all together
